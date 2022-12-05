@@ -11,7 +11,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
         @power = Power.find(params[:id])
         render json: @power
     end
-
+    # POST /powers
     def update
         @power = Power.find(params[:id])
         @power.update!(power_params)
@@ -19,7 +19,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
         rescue ActiveRecord::RecordInvalid => invalid
             render json: {errors: "validation errors"}, status: :unprocessable_entity
     end
-
+    #Private methods
     private
     def render_not_found_response
         render json: { error: "Power not found" }, status: :not_found
