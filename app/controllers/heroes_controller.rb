@@ -2,7 +2,7 @@ class HeroesController < ApplicationController
     # GET /heroes
     def index
         @heroes = Hero.all
-        render json: @heroes, include: [:powers]
+        render json: @heroes, each_serializer: HerowithpowersSerializer
     end
 
     #GET /heroes/:id
