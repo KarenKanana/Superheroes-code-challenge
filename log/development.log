@@ -1,0 +1,279 @@
+  [1m[35m (86.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (86.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePowers (20221205070605)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205070605"]]
+  [1m[36mTRANSACTION (111.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateHeroPowers (20221205071051)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "hero_powers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "hero_id" integer NOT NULL, "powers_id" integer NOT NULL, "strength" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a064e6fddd"
+FOREIGN KEY ("hero_id")
+  REFERENCES "heroes" ("id")
+, CONSTRAINT "fk_rails_44154d2325"
+FOREIGN KEY ("powers_id")
+  REFERENCES "powers" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_hero_powers_on_hero_id" ON "hero_powers" ("hero_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_hero_powers_on_powers_id" ON "hero_powers" ("powers_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205071051"]]
+  [1m[36mTRANSACTION (103.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateHeroes (20221205071323)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "heroes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "super_name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205071323"]]
+  [1m[36mTRANSACTION (80.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-05 07:15:25.827544"], ["updated_at", "2022-12-05 07:15:25.827544"]]
+  [1m[36mTRANSACTION (40.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tana Bechtelar"], ["super_name", "James Bailey"], ["created_at", "2022-12-05 07:16:57.997810"], ["updated_at", "2022-12-05 07:16:57.997810"]]
+  [1m[36mTRANSACTION (111.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sen. Jerold Stamm"], ["super_name", "Sanda Altenwerth"], ["created_at", "2022-12-05 07:16:58.112310"], ["updated_at", "2022-12-05 07:16:58.112310"]]
+  [1m[36mTRANSACTION (55.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.8ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teresita Kautzer"], ["super_name", "Rhiannon Wolf"], ["created_at", "2022-12-05 07:16:58.177433"], ["updated_at", "2022-12-05 07:16:58.177433"]]
+  [1m[36mTRANSACTION (51.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.9ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Stanley Lockman"], ["super_name", "Jamie Crist"], ["created_at", "2022-12-05 07:16:58.242835"], ["updated_at", "2022-12-05 07:16:58.242835"]]
+  [1m[36mTRANSACTION (103.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Rev. Gerard Romaguera"], ["super_name", "See Reichel DC"], ["created_at", "2022-12-05 07:16:58.358505"], ["updated_at", "2022-12-05 07:16:58.358505"]]
+  [1m[36mTRANSACTION (96.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.4ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jamel Hane"], ["description", "Omnis est in. Officiis explicabo quaerat. Aut *numquam* excepturi."], ["created_at", "2022-12-05 07:16:58.493180"], ["updated_at", "2022-12-05 07:16:58.493180"]]
+  [1m[36mTRANSACTION (51.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.4ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mr. Hilma Gleichner"], ["description", "Nam voluptates ea. Voluptatem _nesciunt_ quibusdam. Quibusdam exercitationem ut."], ["created_at", "2022-12-05 07:16:58.573656"], ["updated_at", "2022-12-05 07:16:58.573656"]]
+  [1m[36mTRANSACTION (87.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Alonso Hessel"], ["description", "Suscipit vel *natus.* Expedita aut corrupti. Voluptatibus aut ipsam."], ["created_at", "2022-12-05 07:16:58.668276"], ["updated_at", "2022-12-05 07:16:58.668276"]]
+  [1m[36mTRANSACTION (71.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (1.0ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "The Hon. Arron Reynolds"], ["description", "~At~ odit consequatur. Et voluptatibus ut. Beatae sunt debitis."], ["created_at", "2022-12-05 07:16:58.747593"], ["updated_at", "2022-12-05 07:16:58.747593"]]
+  [1m[36mTRANSACTION (75.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.8ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Reynaldo Stiedemann"], ["description", "Nemo enim repellendus. Corrupti reiciendis nesciunt. **Officiis** et libero."], ["created_at", "2022-12-05 07:16:58.839876"], ["updated_at", "2022-12-05 07:16:58.839876"]]
+  [1m[36mTRANSACTION (78.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.4ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Joe Heller"], ["super_name", "Columbus Ankunding DVM"], ["created_at", "2022-12-05 07:17:39.258180"], ["updated_at", "2022-12-05 07:17:39.258180"]]
+  [1m[36mTRANSACTION (92.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Msgr. Damian O'Connell"], ["super_name", "Dr. Desmond Balistreri"], ["created_at", "2022-12-05 07:17:39.354114"], ["updated_at", "2022-12-05 07:17:39.354114"]]
+  [1m[36mTRANSACTION (88.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Myron O'Hara"], ["super_name", "Booker Wiegand"], ["created_at", "2022-12-05 07:17:39.445730"], ["updated_at", "2022-12-05 07:17:39.445730"]]
+  [1m[36mTRANSACTION (80.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Randall Aufderhar"], ["super_name", "Johanna Hermiston"], ["created_at", "2022-12-05 07:17:39.529115"], ["updated_at", "2022-12-05 07:17:39.529115"]]
+  [1m[36mTRANSACTION (80.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Lilly Corwin"], ["super_name", "Joshua Mills"], ["created_at", "2022-12-05 07:17:39.612395"], ["updated_at", "2022-12-05 07:17:39.612395"]]
+  [1m[36mTRANSACTION (80.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Lola Langosh"], ["description", "Dolore provident non. Quia reiciendis ~ea.~ Veniam quidem corporis."], ["created_at", "2022-12-05 07:17:39.702983"], ["updated_at", "2022-12-05 07:17:39.702983"]]
+  [1m[36mTRANSACTION (61.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Malik Kub"], ["description", "Facere perferendis **ipsa.** Molestiae facere et. Facere tenetur incidunt."], ["created_at", "2022-12-05 07:17:39.767838"], ["updated_at", "2022-12-05 07:17:39.767838"]]
+  [1m[36mTRANSACTION (63.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dewayne Dach"], ["description", "Itaque ad distinctio. Ex non porro. ~Doloribus~ eveniet tempora."], ["created_at", "2022-12-05 07:17:39.834404"], ["updated_at", "2022-12-05 07:17:39.834404"]]
+  [1m[36mTRANSACTION (55.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Fr. Dana Bins"], ["description", "Et qui nemo. Dolores **similique** unde. Minima officiis quia."], ["created_at", "2022-12-05 07:17:39.892758"], ["updated_at", "2022-12-05 07:17:39.892758"]]
+  [1m[36mTRANSACTION (55.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dudley Dare V"], ["description", "Ut earum **quos.** Necessitatibus in eum. Et a eius."], ["created_at", "2022-12-05 07:17:39.951187"], ["updated_at", "2022-12-05 07:17:39.951187"]]
+  [1m[36mTRANSACTION (55.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jeromy Schmitt"], ["super_name", "Iliana Harvey DC"], ["created_at", "2022-12-05 07:17:55.197566"], ["updated_at", "2022-12-05 07:17:55.197566"]]
+  [1m[36mTRANSACTION (86.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.9ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Yelena Kunde"], ["super_name", "Collen Borer"], ["created_at", "2022-12-05 07:17:55.292492"], ["updated_at", "2022-12-05 07:17:55.292492"]]
+  [1m[36mTRANSACTION (86.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.9ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dr. Wesley Schmidt"], ["super_name", "Nevada Hyatt"], ["created_at", "2022-12-05 07:17:55.391665"], ["updated_at", "2022-12-05 07:17:55.391665"]]
+  [1m[36mTRANSACTION (96.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jessi Tillman"], ["super_name", "Jonelle Stoltenberg"], ["created_at", "2022-12-05 07:17:55.501303"], ["updated_at", "2022-12-05 07:17:55.501303"]]
+  [1m[36mTRANSACTION (69.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jerrold Fisher"], ["super_name", "Hank Hane"], ["created_at", "2022-12-05 07:17:55.579353"], ["updated_at", "2022-12-05 07:17:55.579353"]]
+  [1m[36mTRANSACTION (72.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.3ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dorthea Sipes"], ["description", "Similique esse rerum. Sed _architecto_ quod. Labore consequatur velit."], ["created_at", "2022-12-05 07:17:55.665853"], ["updated_at", "2022-12-05 07:17:55.665853"]]
+  [1m[36mTRANSACTION (48.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.7ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Gov. Gaylene Nicolas"], ["description", "Necessitatibus _alias_ velit. Suscipit omnis quia. Architecto sapiente blanditiis."], ["created_at", "2022-12-05 07:17:55.724198"], ["updated_at", "2022-12-05 07:17:55.724198"]]
+  [1m[36mTRANSACTION (60.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.3ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Wynona Cummings PhD"], ["description", "Atque et id. Atque alias *minus.* Eos officiis quae."], ["created_at", "2022-12-05 07:17:55.793964"], ["updated_at", "2022-12-05 07:17:55.793964"]]
+  [1m[36mTRANSACTION (62.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.7ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Fr. Shantelle Bechtelar"], ["description", "Sunt facere consequatur. Et magnam nobis. Aspernatur ~sit~ et."], ["created_at", "2022-12-05 07:17:55.864405"], ["updated_at", "2022-12-05 07:17:55.864405"]]
+  [1m[36mTRANSACTION (70.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (1.0ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Rick Swift DO"], ["description", "Ea et _optio._ Quasi voluptatem corporis. Qui quia doloribus."], ["created_at", "2022-12-05 07:17:55.948972"], ["updated_at", "2022-12-05 07:17:55.948972"]]
+  [1m[36mTRANSACTION (57.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.1ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "King Rohan"], ["super_name", "Racheal Reilly"], ["created_at", "2022-12-05 07:19:44.094059"], ["updated_at", "2022-12-05 07:19:44.094059"]]
+  [1m[36mTRANSACTION (125.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.9ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Shirlene Yost"], ["super_name", "Orlando Zboncak"], ["created_at", "2022-12-05 07:19:44.226022"], ["updated_at", "2022-12-05 07:19:44.226022"]]
+  [1m[36mTRANSACTION (78.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.8ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Maragret Gislason"], ["super_name", "Marion Gottlieb"], ["created_at", "2022-12-05 07:19:44.317588"], ["updated_at", "2022-12-05 07:19:44.317588"]]
+  [1m[36mTRANSACTION (80.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dr. Jodie Lowe"], ["super_name", "Marlin Cartwright"], ["created_at", "2022-12-05 07:19:44.410786"], ["updated_at", "2022-12-05 07:19:44.410786"]]
+  [1m[36mTRANSACTION (101.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Wilmer Roberts"], ["super_name", "Seymour Beatty Jr."], ["created_at", "2022-12-05 07:19:44.522546"], ["updated_at", "2022-12-05 07:19:44.522546"]]
+  [1m[36mTRANSACTION (496.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sen. Rob Conroy"], ["description", "Qui dolorem **sint.** Incidunt sit error. Non ut animi."], ["created_at", "2022-12-05 07:19:45.056363"], ["updated_at", "2022-12-05 07:19:45.056363"]]
+  [1m[36mTRANSACTION (99.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Randal Mante"], ["description", "Quos consequuntur sit. Rerum quibusdam vitae. *In* rerum vel."], ["created_at", "2022-12-05 07:19:45.166637"], ["updated_at", "2022-12-05 07:19:45.166637"]]
+  [1m[36mTRANSACTION (69.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.5ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jessenia Koss"], ["description", "Rerum magni corporis. Eum rerum non. Velit **consequatur** minima."], ["created_at", "2022-12-05 07:19:45.248008"], ["updated_at", "2022-12-05 07:19:45.248008"]]
+  [1m[36mTRANSACTION (56.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.7ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Msgr. Nestor Becker"], ["description", "Quia id sit. **Sapiente** dolores cumque. Labore mollitia odit."], ["created_at", "2022-12-05 07:19:45.316015"], ["updated_at", "2022-12-05 07:19:45.316015"]]
+  [1m[36mTRANSACTION (87.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.5ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "The Hon. Everette Nader"], ["description", "Quos blanditiis suscipit. Modi aut doloribus. _Temporibus_ aut voluptatum."], ["created_at", "2022-12-05 07:19:45.413931"], ["updated_at", "2022-12-05 07:19:45.413931"]]
+  [1m[36mTRANSACTION (57.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.2ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Talitha Lueilwitz"], ["super_name", "Markus Powlowski"], ["created_at", "2022-12-05 07:20:59.130632"], ["updated_at", "2022-12-05 07:20:59.130632"]]
+  [1m[36mTRANSACTION (106.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.6ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Olevia Brekke"], ["super_name", "Terrell Yost"], ["created_at", "2022-12-05 07:20:59.243186"], ["updated_at", "2022-12-05 07:20:59.243186"]]
+  [1m[36mTRANSACTION (130.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Shamika Mertz"], ["super_name", "Mrs. Bobbie Gleichner"], ["created_at", "2022-12-05 07:20:59.385594"], ["updated_at", "2022-12-05 07:20:59.385594"]]
+  [1m[36mTRANSACTION (70.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.2ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mrs. Jamee Hudson"], ["super_name", "Ha Herzog Sr."], ["created_at", "2022-12-05 07:20:59.464627"], ["updated_at", "2022-12-05 07:20:59.464627"]]
+  [1m[36mTRANSACTION (122.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.9ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jordon Williamson"], ["super_name", "Sen. Daniel Beier"], ["created_at", "2022-12-05 07:20:59.594788"], ["updated_at", "2022-12-05 07:20:59.594788"]]
+  [1m[36mTRANSACTION (68.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dr. Coreen Hyatt"], ["description", "Ut fuga repellendus. Ducimus numquam beatae. Magnam neque *doloremque.*"], ["created_at", "2022-12-05 07:20:59.712864"], ["updated_at", "2022-12-05 07:20:59.712864"]]
+  [1m[36mTRANSACTION (73.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Verona Senger"], ["description", "Rerum vel consequatur. Commodi eaque ~temporibus.~ Nemo debitis cum."], ["created_at", "2022-12-05 07:20:59.800851"], ["updated_at", "2022-12-05 07:20:59.800851"]]
+  [1m[36mTRANSACTION (85.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tracey Padberg"], ["description", "**Est** voluptatem sit. Perspiciatis velit rem. Voluptatem velit consequatur."], ["created_at", "2022-12-05 07:20:59.900666"], ["updated_at", "2022-12-05 07:20:59.900666"]]
+  [1m[36mTRANSACTION (67.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.8ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Roy Glover"], ["description", "Adipisci iusto perferendis. Velit voluptatem quo. Magni excepturi ~et.~"], ["created_at", "2022-12-05 07:20:59.983157"], ["updated_at", "2022-12-05 07:20:59.983157"]]
+  [1m[36mTRANSACTION (71.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.6ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Terrell Dooley"], ["description", "Voluptatem dolor culpa. Eligendi ~fugit~ sit. Et debitis molestiae."], ["created_at", "2022-12-05 07:21:00.066060"], ["updated_at", "2022-12-05 07:21:00.066060"]]
+  [1m[36mTRANSACTION (72.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.2ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers"[0m
+  [1m[36mPower Load (0.4ms)[0m  [1m[34mSELECT "powers".* FROM "powers" ORDER BY "powers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Miyoko Rippin I"], ["super_name", "Laila Ondricka"], ["created_at", "2022-12-05 07:24:04.666935"], ["updated_at", "2022-12-05 07:24:04.666935"]]
+  [1m[36mTRANSACTION (80.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Miss Sidney Daugherty"], ["super_name", "Bettye Lang"], ["created_at", "2022-12-05 07:24:04.753583"], ["updated_at", "2022-12-05 07:24:04.753583"]]
+  [1m[36mTRANSACTION (64.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Daron Auer"], ["super_name", "Marth Ledner"], ["created_at", "2022-12-05 07:24:04.828792"], ["updated_at", "2022-12-05 07:24:04.828792"]]
+  [1m[36mTRANSACTION (88.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Erwin Rolfson Sr."], ["super_name", "Miss Loyce Lindgren"], ["created_at", "2022-12-05 07:24:04.959752"], ["updated_at", "2022-12-05 07:24:04.959752"]]
+  [1m[36mTRANSACTION (78.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (1.1ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jaime Bergstrom"], ["super_name", "The Hon. Young O'Kon"], ["created_at", "2022-12-05 07:24:05.046659"], ["updated_at", "2022-12-05 07:24:05.046659"]]
+  [1m[36mTRANSACTION (73.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.7ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Donald Stiedemann"], ["description", "Et non fuga. Illo *quia* cumque. Eos quia aliquid."], ["created_at", "2022-12-05 07:24:05.172054"], ["updated_at", "2022-12-05 07:24:05.172054"]]
+  [1m[36mTRANSACTION (66.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ollie Frami"], ["description", "Aut voluptatem ~consequatur.~ Quis nesciunt autem. Quam est nulla."], ["created_at", "2022-12-05 07:24:05.255474"], ["updated_at", "2022-12-05 07:24:05.255474"]]
+  [1m[36mTRANSACTION (71.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Benedict Doyle"], ["description", "Quo expedita *alias.* Et quia aut. Dicta veritatis placeat."], ["created_at", "2022-12-05 07:24:05.343189"], ["updated_at", "2022-12-05 07:24:05.343189"]]
+  [1m[36mTRANSACTION (70.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.9ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Horacio Connelly"], ["description", "Atque provident autem. *Maiores* quia dolores. Exercitationem amet sunt."], ["created_at", "2022-12-05 07:24:05.426629"], ["updated_at", "2022-12-05 07:24:05.426629"]]
+  [1m[36mTRANSACTION (94.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.3ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mercedes Mosciski DVM"], ["description", "Quis exercitationem esse. Eum sed dolores. _Hic_ exercitationem aspernatur."], ["created_at", "2022-12-05 07:24:05.531000"], ["updated_at", "2022-12-05 07:24:05.531000"]]
+  [1m[36mTRANSACTION (87.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.2ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.3ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Sol Johnson"], ["super_name", "Ludivina Keebler Esq."], ["created_at", "2022-12-05 07:25:12.382164"], ["updated_at", "2022-12-05 07:25:12.382164"]]
+  [1m[36mTRANSACTION (65.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.6ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ms. Briana Christiansen"], ["super_name", "Landon Hirthe"], ["created_at", "2022-12-05 07:25:12.454169"], ["updated_at", "2022-12-05 07:25:12.454169"]]
+  [1m[36mTRANSACTION (56.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.8ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ardath Gibson"], ["super_name", "Jere Mayer"], ["created_at", "2022-12-05 07:25:12.521292"], ["updated_at", "2022-12-05 07:25:12.521292"]]
+  [1m[36mTRANSACTION (60.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.7ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Fr. Reginald Nicolas"], ["super_name", "Nancee Schuster Jr."], ["created_at", "2022-12-05 07:25:12.595705"], ["updated_at", "2022-12-05 07:25:12.595705"]]
+  [1m[36mTRANSACTION (81.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Create (0.8ms)[0m  [1m[32mINSERT INTO "heroes" ("name", "super_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Benedict Kertzmann"], ["super_name", "Mrs. Michael Turcotte"], ["created_at", "2022-12-05 07:25:12.687732"], ["updated_at", "2022-12-05 07:25:12.687732"]]
+  [1m[36mTRANSACTION (80.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.8ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "James Hudson"], ["description", "**Totam** tempore deserunt. Nostrum expedita et. Nobis modi corrupti."], ["created_at", "2022-12-05 07:25:12.815420"], ["updated_at", "2022-12-05 07:25:12.815420"]]
+  [1m[36mTRANSACTION (91.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.3ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Hattie Pagac"], ["description", "Repellat qui ~voluptate.~ Omnis quia labore. A nisi officiis."], ["created_at", "2022-12-05 07:25:12.916135"], ["updated_at", "2022-12-05 07:25:12.916135"]]
+  [1m[36mTRANSACTION (111.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.8ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Birdie Schaden"], ["description", "Voluptatibus voluptatem et. Illum inventore ipsum. Est suscipit _nulla._"], ["created_at", "2022-12-05 07:25:13.038781"], ["updated_at", "2022-12-05 07:25:13.038781"]]
+  [1m[36mTRANSACTION (84.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.2ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Lacy Ernser"], ["description", "Facilis consectetur dolor. *Minima* vitae et. Quasi veritatis ad."], ["created_at", "2022-12-05 07:25:13.132375"], ["updated_at", "2022-12-05 07:25:13.132375"]]
+  [1m[36mTRANSACTION (88.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPower Create (0.3ms)[0m  [1m[32mINSERT INTO "powers" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jeffrey Rogahn"], ["description", "Dicta iusto quidem. Sint deleniti temporibus. Sunt distinctio _est._"], ["created_at", "2022-12-05 07:25:13.224697"], ["updated_at", "2022-12-05 07:25:13.224697"]]
+  [1m[36mTRANSACTION (78.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.5ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
