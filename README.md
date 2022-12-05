@@ -21,7 +21,7 @@ A simple Superheroes Rails API that fetches heroes and their powers.
 
 
 ## Technology Used
-![](https://img.shields.io/badge/Github-black)&nbsp;&nbsp;&nbsp;![](https://img.shields.io/badge/Ruby-Red)
+![](https://img.shields.io/badge/Github-black)&nbsp;&nbsp;&nbsp;![](https://img.shields.io/badge/Ruby-Red)&nbsp;&nbsp;&nbsp;![](https://img.shields.io/badge/Postman-orange)
 
 
 ## Setup Instructions
