@@ -16,6 +16,7 @@ gem "active_model_serializers"
 
 gem "faker"
 
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -50,3 +51,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "byebug", "~> 11.1"

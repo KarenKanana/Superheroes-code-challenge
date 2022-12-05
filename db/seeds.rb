@@ -23,11 +23,11 @@ puts "Seeding..."
   powers4 = Power.create(name: Faker::Name.name, description: Faker::Markdown.emphasis)
   powers5 = Power.create(name: Faker::Name.name, description: Faker::Markdown.emphasis)
 
-  HeroPower.create(hero_id: heroes1.id, powers_id: powers1.id, strength: "Strong")
-  HeroPower.create(hero_id: heroes2.id, powers_id: powers2.id, strength: "Weak")
-  HeroPower.create(hero_id: heroes1.id, powers_id: powers3.id, strength: "Strong")
-  HeroPower.create(hero_id: heroes3.id, powers_id: powers1.id, strength: "Average")
-  HeroPower.create(hero_id: heroes4.id, powers_id: powers3.id, strength: "Weak")
+  HeroPower.create(hero_id: heroes1.id, power_id: powers1.id, strength: "Strong")
+  HeroPower.create(hero_id: heroes2.id, power_id: powers2.id, strength: "Weak")
+  HeroPower.create(hero_id: heroes1.id, power_id: powers3.id, strength: "Strong")
+  HeroPower.create(hero_id: heroes3.id, power_id: powers1.id, strength: "Average")
+  HeroPower.create(hero_id: heroes4.id, power_id: powers3.id, strength: "Weak")
 
 
   puts "Done seeding!"

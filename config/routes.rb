@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hero_powers
   resources :heroes, only: %i[ index show ]
   resources :hero_powers, only: %i[ index show create]
   resources :powers, only: %i[ index show ]
