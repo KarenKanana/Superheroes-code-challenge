@@ -2,8 +2,7 @@ class HeroesController < ApplicationController
     # GET /heroes
     def index
         @heroes = Hero.all
-        # byebug
-        render json: @heroes
+        render json: @heroes, include: [:powers]
     end
 
     #GET /heroes/:id

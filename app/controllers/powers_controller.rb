@@ -5,6 +5,7 @@ class PowersController < ApplicationController
         render json: @powers
     end
 
+    # GET /powers/:id
     def show
         @power = Power.find(params[:id])
         render json: @power
