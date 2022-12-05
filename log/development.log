@@ -1538,3 +1538,84 @@ Processing by HeroPowersController#create as */*
 Completed 422 Unprocessable Entity in 7ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 2623)
 
 
+Started GET "/heroes" for 127.0.0.1 at 2022-12-05 16:32:25 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HeroesController#index as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "hero"=>{}}
+  [1m[36mHero Load (0.2ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes"[0m
+  ↳ app/controllers/heroes_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.64ms)
+Completed 200 OK in 122ms (Views: 51.8ms | ActiveRecord: 1.7ms | Allocations: 36431)
+
+
+Started GET "/heroes/1" for 127.0.0.1 at 2022-12-05 16:32:31 +0300
+Processing by HeroesController#show as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "id"=>"1", "hero"=>{}}
+  [1m[36mHero Load (0.6ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/heroes_controller.rb:10:in `show'
+[active_model_serializers]   [1m[36mPower Load (0.3ms)[0m  [1m[34mSELECT "powers".* FROM "powers" INNER JOIN "hero_powers" ON "powers"."id" = "hero_powers"."power_id" WHERE "hero_powers"."hero_id" = ?[0m  [["hero_id", 1]]
+[active_model_serializers]   ↳ app/controllers/heroes_controller.rb:11:in `show'
+[active_model_serializers] Rendered HeroSerializer with ActiveModelSerializers::Adapter::Attributes (276.21ms)
+Completed 200 OK in 336ms (Views: 286.5ms | ActiveRecord: 3.7ms | Allocations: 26704)
+
+
+Started GET "/powers" for 127.0.0.1 at 2022-12-05 16:32:49 +0300
+Processing by PowersController#index as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "power"=>{}}
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers"[0m
+  ↳ app/controllers/powers_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.7ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 1579)
+
+
+Started GET "/powers/1" for 127.0.0.1 at 2022-12-05 16:32:54 +0300
+Processing by PowersController#show as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "id"=>"1", "power"=>{}}
+  [1m[36mPower Load (0.1ms)[0m  [1m[34mSELECT "powers".* FROM "powers" WHERE "powers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/powers_controller.rb:11:in `show'
+[active_model_serializers] Rendered PowerSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 792)
+
+
+Started GET "/hero_power" for 127.0.0.1 at 2022-12-05 16:33:04 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/hero_power"):
+  
+Started GET "/hero_powers" for 127.0.0.1 at 2022-12-05 16:33:08 +0300
+Processing by HeroPowersController#index as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "hero_power"=>{"power_id"=>1, "strength"=>"Weak"}}
+  [1m[36mHeroPower Load (0.4ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers"[0m
+  ↳ app/controllers/hero_powers_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.99ms)
+Completed 200 OK in 44ms (Views: 41.2ms | ActiveRecord: 2.6ms | Allocations: 16379)
+
+
+Started GET "/hero_powers/1" for 127.0.0.1 at 2022-12-05 16:33:13 +0300
+Processing by HeroPowersController#show as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "id"=>"1", "hero_power"=>{"power_id"=>1, "strength"=>"Weak"}}
+  [1m[36mHeroPower Load (0.2ms)[0m  [1m[34mSELECT "hero_powers".* FROM "hero_powers" WHERE "hero_powers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hero_powers_controller.rb:11:in `show'
+[active_model_serializers] Rendered HeroPowerSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 778)
+
+
+Started GET "/heroes" for 127.0.0.1 at 2022-12-05 16:34:07 +0300
+Processing by HeroesController#index as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "hero"=>{}}
+  [1m[36mHero Load (0.2ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes"[0m
+  ↳ app/controllers/heroes_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 1.4ms | Allocations: 2579)
+
+
+Started GET "/heroes/1" for 127.0.0.1 at 2022-12-05 16:34:12 +0300
+Processing by HeroesController#show as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "id"=>"1", "hero"=>{}}
+  [1m[36mHero Load (0.3ms)[0m  [1m[34mSELECT "heroes".* FROM "heroes" WHERE "heroes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/heroes_controller.rb:10:in `show'
+[active_model_serializers]   [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers" INNER JOIN "hero_powers" ON "powers"."id" = "hero_powers"."power_id" WHERE "hero_powers"."hero_id" = ?[0m  [["hero_id", 1]]
+[active_model_serializers]   ↳ app/controllers/heroes_controller.rb:11:in `show'
+[active_model_serializers] Rendered HeroSerializer with ActiveModelSerializers::Adapter::Attributes (16.16ms)
+Completed 200 OK in 106ms (Views: 102.6ms | ActiveRecord: 1.5ms | Allocations: 10105)
+
+
