@@ -1619,3 +1619,18 @@ Processing by HeroesController#show as */*
 Completed 200 OK in 106ms (Views: 102.6ms | ActiveRecord: 1.5ms | Allocations: 10105)
 
 
+Started GET "/pizzas" for 127.0.0.1 at 2022-12-05 16:38:59 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/pizzas"):
+  
+Started GET "/powers" for 127.0.0.1 at 2022-12-05 16:56:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PowersController#index as */*
+  Parameters: {"strength"=>"Weak", "power_id"=>1, "power"=>{}}
+  [1m[36mPower Load (0.2ms)[0m  [1m[34mSELECT "powers".* FROM "powers"[0m
+  ↳ app/controllers/powers_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.49ms)
+Completed 200 OK in 66ms (Views: 33.3ms | ActiveRecord: 0.9ms | Allocations: 37001)
+
+
